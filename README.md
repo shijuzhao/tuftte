@@ -42,6 +42,12 @@ Install the conda environment using `environment.yml`.
 conda create -n tuftte --file environment.yml
 ```
 
+Prepare datasets. Download `abilene.txt`, `directed-abilene-zhang-5min-over-6months-ALL-native.tar` from SNDlib and move them to `data/`. Generate the topology by the following commands.
+```bash
+cd data/
+python3 snd_gen_topo.py
+```
+
 ## 4. Running Experiments
 ```bash
 python3 main.py
