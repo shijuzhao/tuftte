@@ -3,5 +3,46 @@
 ## 1. Overview
 This is a naive version of TUFTTE. I will supplement the description here later this year. I am also exploring another efficient tools.
 
-## 2. Structure
-The code will be soon available, and the structure will be displayed here.
+## 2. Code Structure
+```
+Tuftte
+├── algorithms
+│   ├── DOTE-main
+│   ├── __init__.py
+│   ├── DoteSolver.py
+│   ├── TEAVARSolver.py
+│   ├── TESolver.py
+│   └── TUFTTESolver.py
+├── data
+│   ├── gml_gen_topo.py
+│   └── snd_gen_topo.py
+├── utils
+│   ├── __init__.py
+│   ├── CvxpySolver.py
+│   ├── GurobiSolver.py
+│   ├── helper.py
+│   ├── history.py
+│   ├── NetworkParser.py
+│   ├── NetworkTopology.py
+│   ├── prediction.py
+│   ├── riskMetric.py
+│   └── scenario.py
+├── availability.py
+├── benchmark_consts.py
+├── dl_experiment.py
+├── environment.yml
+├── main.py
+├── motivation.py
+└── prediction_details.py
+```
+
+## 3. Getting Started
+Install the conda environment using `environment.yml`.
+```bash
+conda create -n tuftte --file environment.yml
+```
+
+## 4. Running Experiments
+```bash
+python3 main.py
+```

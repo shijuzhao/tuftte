@@ -1,0 +1,4 @@
+__pycache__/
+.vscode/
+algorithms/DOTE-main/networking_envs/data/
+data/
