@@ -108,7 +108,7 @@ def demand_loss_expr(topology, num_dms_for_train=None, num_dms_for_test=None, K=
         marker_styles = ['o', 's', '^', 'v', '<', '>', 'p', 'h', 'D', '*', '+', 'x']
         cdf = np.arange(len(predicted_tms)) / (len(predicted_tms) - 1)
         for i, method in enumerate(method_loss.keys()):
-            data = np.sort(method_loss[method]) * 1000
+            data = np.sort(method_loss[method])
             plt.plot(data, cdf, label=method, marker=marker_styles[i], markevery=len(data)//15)
 
         plt.xlabel("Demand loss (Mbps)", fontsize=fontsize)
