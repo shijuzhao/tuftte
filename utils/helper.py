@@ -67,9 +67,3 @@ def unity_from_distance(shortcut_distance):
     else:
         unity = 0
     return unity
-
-# def get_viable_failures(network, k=1):
-#     """
-#     Returns the set of edge tuples that can fail.
-#     """
-#     return []
