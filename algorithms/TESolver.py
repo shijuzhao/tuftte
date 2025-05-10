@@ -57,7 +57,7 @@ class TESolver:
             self.Minimize(Z)
         else:
             print(f"Objective {obj} is not defined!")
-            assert False
+            raise NotImplementedError
 
         obj = self.lp.Solve()
         self.network.set_tunnel_flow(self.lp.Value)

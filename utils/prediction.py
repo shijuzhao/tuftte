@@ -78,6 +78,7 @@ def predict_traffic_matrix(train_tms, test_tms, hist_len=12, method=MAX):
         predicted_tms = predicted_tms.transpose()
 
     else:
-        assert False, f"Method {method} is not defined!"
+        print(f"Method {method} is not defined!")
+        raise NotImplementedError
 
     return predicted_tms

@@ -93,31 +93,6 @@ class TUFTTESolver:
     
     def _train(self):
         opts = self._compute_opts_to_train()
-        # predict_model = self._pre_train()
-        # data = PredictDataset(self.network.train_hists._tms, self.hist_len)
-        # train_examples = DataLoader(data, shuffle=True)
-        # mse_loss = []
-        # a = []
-        # with tqdm(train_examples) as tdata:
-        #     loss_sum = 0
-        #     count = 0
-        #     for (x, y) in tdata:
-        #         y_hat = predict_model(x)
-        #         loss = nn.MSELoss()(y, y_hat)
-        #         loss2 = nn.MSELoss()(y, torch.tensor([[torch.mean(x[0][12 * i: 12 * (i+1)]) for i in range(462)]]))
-        #         if loss.item() > 1e6:
-        #             continue
-        #         a.append(loss2.item() - loss.item())
-        #         mse_loss.append(loss.item())
-        #         loss_sum += loss.item()
-        #         count += 1
-        #         tdata.set_postfix(loss=loss_sum/count)
-
-        # # import matplotlib.pyplot as plt
-        # print(np.percentile(mse_loss, 75), np.mean(mse_loss), np.percentile(mse_loss, 25))
-        # print(np.percentile(a, 75), np.mean(a), np.percentile(a, 25))
-        # # plt.plot(mse_loss)
-        # # plt.savefig('nn.pdf')
         model_name = f"data/{self.name}/model_{self.type}.pkl"
         if not os.path.exists(model_name):
             predict_model = self._pre_train()
@@ -129,7 +104,7 @@ class TUFTTESolver:
             elif self.type == Availability:
                 model = TEAVARModel(predict_model, self.network)
             else:
-                assert(False)
+                raise NotImplementedError
             optimizer = torch.optim.Adam(model.parameters())
             for ep in range(1):
                 with tqdm(train_examples) as tdata:
@@ -168,7 +143,7 @@ class TUFTTESolver:
         elif self.type == Availability:
             model = TEAVARModel(predict_model, self.network)
         else:
-            assert(False)
+            raise NotImplementedError
         optimizer = torch.optim.Adam(model.parameters())
         positive = []
         negative = []
@@ -362,7 +337,6 @@ class PredictNN(nn.Module):
         res = [torch.mean(x[0][self.hist_len * i: self.hist_len * (i+1)]) for i in range(self.num_pairs)]
         output = self.net(x) + torch.tensor(res)
         return output
-        # return self.net(x)
     
 class PredictDataset(Dataset):
     def __init__(self, tms, hist_len=12):
