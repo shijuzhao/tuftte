@@ -92,23 +92,13 @@ def demand_loss_expr(topology, num_dms_for_train=None, num_dms_for_test=None, K=
             loss_reduction += 1
     print("TUFTTE's demand loss is less than FFC's averagely by ", loss_reduction / len(method_loss["TUFTTE"]))
     print("Maximum discrepancy: ", max_loss)
-
-    # for tm in network.test_hists._tms[hist_len:]:
-    #     network.set_demand_amount(tm)
-    #     solver = Dsolver(network, tm)
-    #     solver.solve()
-    #     sol = [tunnel.v_flow_value for tunnel in network.solutions.tunnels]
-    #     network.add_sol(sol)
-    
-    # demand_loss, _ = calculate_risk(network, hist_len)
-    # method_loss["Oracle"] = demand_loss
     
     if plot:
         fontsize = 20
         marker_styles = ['o', 's', '^', 'v', '<', '>', 'p', 'h', 'D', '*', '+', 'x']
         cdf = np.arange(len(predicted_tms)) / (len(predicted_tms) - 1)
         for i, method in enumerate(method_loss.keys()):
-            data = np.sort(method_loss[method]) * 1000
+            data = np.sort(method_loss[method])
             plt.plot(data, cdf, label=method, marker=marker_styles[i], markevery=len(data)//15)
 
         plt.xlabel("Demand loss (Mbps)", fontsize=fontsize)
