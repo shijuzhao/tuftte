@@ -17,7 +17,6 @@ import matplotlib.pyplot as plt
 import numpy as np
 
 PREDICTION_BASED_METHODS = ["MaxMin", "MLU", "FFC", "TEAVAR"]
-PREDICTION_BASED_METHODS = []
 DIRECT_OPTIMIZATION = ["DOTE", "TUFTTE"]
 
 def demand_loss_expr(topology, num_dms_for_train=None, num_dms_for_test=None, K=1, hist_len=12, demand_scale=1, plot=False):

@@ -1,5 +1,5 @@
 """
-Motivating experiments. (Figure 1)
+Motivational experiments. (Figure 1)
 """
 
 from utils.NetworkParser import *
