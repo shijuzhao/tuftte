@@ -39,12 +39,14 @@ Tuftte
 We import `DOTE` from their public repository without modification.
 
 ## 3. Getting Started
-Install the conda environment using `environment.yml`.
+First, install the conda environment using `environment.yml`.
 ```bash
 conda create -n tuftte --file environment.yml
 ```
 
-Prepare datasets. Download `abilene.txt`, `directed-abilene-zhang-5min-over-6months-ALL-native.tar` from SNDlib and move them to `data/`. Generate the topology by the following commands.
+Second, apply a license of [GUROBI solver](https://www.gurobi.com/). If you don't have a license, you can use open-source [CVXPY](https://www.cvxpy.org/) instead by replacing all the `GurobiSolver()` with `CvxpySolver()`.
+
+Third, prepare datasets. Download `abilene.txt`, `directed-abilene-zhang-5min-over-6months-ALL-native.tar` from [SNDlib](https://sndlib.put.poznan.pl/home.action) and move them to `data/`. Generate the topology by the following commands.
 ```bash
 cd data/
 python3 snd_gen_topo.py
